@@ -8,7 +8,7 @@ SCRIPTPATH=$(dirname "$SCRIPT")
 ## Begin script body
 
 # check if current repo have pending changes first
-# . $SCRIPTPATH/git-check-stage-state.sh
+. $SCRIPTPATH/git-check-stage-state.sh
 
 # read -p "$(bgreen "INPUT"): Enter $(bred "source git") ssh uri: " old_source
 read -p "$(INPUT "Enter $(byellow "destination git") ssh uri : ")" new_destination
