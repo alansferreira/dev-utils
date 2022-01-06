@@ -41,14 +41,14 @@ fi
 
 echo -e "$(INFO "Begin operations...")"
 
-# git fetch origin
-# # # git branch -a
-# git remote add new-origin $new_destination
-# git push --all new-origin 
-# git push --tags new-origin
-# git remote rm origin
-# git remote rename new-origin origin
-# cd $git_root_path/..
-# mv $git_root_path $git_root_path
+git fetch origin
+# # git branch -a
+git remote add new-origin $new_destination
+git push --all new-origin 
+git push --tags new-origin
+git remote rm origin
+git remote rename new-origin origin
+cd $git_root_path/..
+mv $git_root_path $new_git_root_path
 
 echo -e "$(INFO "Finish")"
