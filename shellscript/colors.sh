@@ -136,3 +136,9 @@ on_iblue(){ echo -e "${coff}${on_iblue}$1${coff}\c" ; }
 on_ipurple(){ echo -e "${coff}${on_ipurple}$1${coff}\c" ; }
 on_icyan(){ echo -e "${coff}${on_icyan}$1${coff}\c" ; }
 on_iwhite(){ echo -e "${coff}${on_iwhite}$1${coff}\c" ; }
+
+
+INPUT(){ echo -e "$(bgreen "INPUT"): $1\c" ; }
+INFO(){ echo -e "$(bblue "INFO"): $1\c" ; }
+WARN(){ echo -e "$(byellow "WARN"): $1\c" ; }
+ERROR(){ echo -e "$(bred "INFO"): $1\c" ; }

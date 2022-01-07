@@ -1,6 +1,8 @@
 ## How to use: 
-## $>. shellscript/git/git-move-repo
-## gitMoveRepo
+## Enter on an git repository folder:
+## $ cd /path/my/git-repo/
+## $ chmod +x /path/to/dev-utils/shellscript/git/git-move-repo.sh
+## $ ./path/to/dev-utils/shellscript/git/git-move-repo.sh
 
 ## Add dependencies from relative dir
 
@@ -9,12 +11,11 @@ __dir=$(dirname "$0")
 __dir=$(readlink -f "$__dir")
 
 . $__dir/../colors.sh
-. $__dir/../logger.sh
 
 ## Begin script body
 
 # check if current repo have pending changes first
-. $__dir/git-check-stage-state
+. $__dir/git-check-stage-state.sh
 
 read -p "$(INPUT "Enter $(byellow "destination git") ssh uri : ")" new_destination
 
