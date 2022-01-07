@@ -1,23 +1,29 @@
-## Add dependencies from relative dir
-SCRIPT=$(readlink -f "$0")
-SCRIPTPATH=$(dirname "$SCRIPT")
+## How to use: 
+## $>. shellscript/git/git-move-repo
+## gitMoveRepo
 
-. $SCRIPTPATH/../colors.sh
-. $SCRIPTPATH/../messages.sh $SCRIPTPATH/../colors.sh
+## Add dependencies from relative dir
+
+_=$(readlink -f "$0")
+__dir=$(dirname "$0")
+__dir=$(readlink -f "$__dir")
+
+. $__dir/../colors.sh
+. $__dir/../logger.sh
 
 ## Begin script body
 
 # check if current repo have pending changes first
-. $SCRIPTPATH/git-check-stage-state.sh
+. $__dir/git-check-stage-state
 
-# read -p "$(bgreen "INPUT"): Enter $(bred "source git") ssh uri: " old_source
 read -p "$(INPUT "Enter $(byellow "destination git") ssh uri : ")" new_destination
 
 git_root_path=$(git rev-parse --show-toplevel)
 current_origin=$(git remote get-url origin)
 current_folder=$(basename $git_root_path)
 new_folder_name=$(basename $new_destination)
-new_folder_name=${new_folder_name%.*}
+# use next line to remove ".git" sufix
+# new_folder_name=${new_folder_name%.*}
 new_git_root_path=$(readlink --canonicalize $git_root_path/../$new_folder_name)
 
 echo -e "$(INFO "Repository will be mirrored from \"$(bred $current_origin)\" to \"$(byellow $new_destination)\".")"
@@ -50,5 +56,4 @@ git remote rm origin
 git remote rename new-origin origin
 cd $git_root_path/..
 mv $git_root_path $new_git_root_path
-
 echo -e "$(INFO "Finish")"

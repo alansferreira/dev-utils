@@ -1,12 +1,9 @@
 ## Add dependencies from relative dir
-SCRIPT=$(readlink -f "$0")
-SCRIPTPATH=$(dirname "$SCRIPT")
-if [[ $1 ]]
-then
-  . $1
-else 
-  . $SCRIPTPATH/colors.sh
-fi
+_=$(readlink -f "$0")
+__dir=$(dirname "$0")
+__dir=$(readlink -f "$__dir")
+
+. $__dir/../colors.sh
 
 INPUT(){ echo -e "$(bgreen "INPUT"): $1\c" ; }
 INFO(){ echo -e "$(bblue "INFO"): $1\c" ; }
