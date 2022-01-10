@@ -1,0 +1,43 @@
+{
+  "configurations": [
+    {
+      "name": "Debug CLI",
+      "request": "launch",
+      "runtimeExecutable": "npm",
+      "type": "node",
+      "console" : "integratedTerminal",
+      "runtimeArgs": [
+        "run-script",
+        "start:cli", 
+        "--",
+
+        "discover",
+        "/media/alf/usr-data/dev/repo/github.com/alansferreira/stages"
+        
+        // "clean", 
+       
+      ],
+      "argsExpansion": false,
+      
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    },
+    {
+      "type": "node",
+      "name": "vscode-jest-tests",
+      "request": "launch",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "disableOptimisticBPs": true,
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "npm",
+      "args": [
+        "run",
+        "test",
+        "--runInBand",
+        "--watchAll=false"
+      ]
+    }
+  ]
+}
